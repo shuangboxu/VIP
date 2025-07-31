@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>VIP视频解析工具</title>
+  <style>
+    body {
+      font-family: "微软雅黑", sans-serif;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+    h2 {
+      color: #333;
+    }
+    input, button, select {
+      padding: 8px;
+      margin: 8px 0;
+      font-size: 16px;
+    }
+    #interfaceList {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>VIP视频解析跳转工具</h2>
+
+  <label for="videoUrl">输入视频链接：</label><br>
+  <input type="text" id="videoUrl" placeholder="例如：https://v.youku.com/..." size="50"><br>
+
+  <label for="interfaceList">选择解析接口：</label><br>
+  <select id="interfaceList">
+    <option value="https://jx.xmflv.com/?url=">虾米解析</option>
+
+  </select><br>
+
+  <button onclick="parseVideo()">立即解析</button>
+
+  <script>
+    function parseVideo() {
+      const url = document.getElementById('videoUrl').value.trim();
+      const api = document.getElementById('interfaceList').value;
+
+      if (!url.startsWith("http")) {
+        alert("请输入正确的视频链接！");
+        return;
+      }
+
+      const finalUrl = api + encodeURIComponent(url);
+      window.open(finalUrl, '_blank');
+    }
+  </script>
+
+</body>
+</html>
